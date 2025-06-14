@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background: linear-gradient(180deg, #0f0f1d 0%, #0a0a14 100%);
+        }
+
+        .btn-pro {
+            --clr-font-main: hsla(0 0% 20% / 100);
+            --btn-bg-1: rgb(121, 206, 255);
+            --btn-bg-2: rgb(0, 50, 131);
+            --btn-bg-color: hsla(360 100% 100% / 1);
+            --radii: 0.5em;
+            cursor: pointer;
+            padding: 0.9em 1.4em;
+            min-width: 120px;
+            min-height: 44px;
+            font-size: var(--size, 1rem);
+            font-weight: 500;
+            transition: 0.8s;
+            background-size: 280% auto;
+            background-image: linear-gradient(325deg,
+                    var(--btn-bg-2) 0%,
+                    var(--btn-bg-1) 55%,
+                    var(--btn-bg-2) 90%);
+            border: none;
+            border-radius: var(--radii);
+            color: var(--btn-bg-color);
+        }
+
+        .btn-pro:hover {
+            background-position: right top;
+        }
+
+        .btn-pro:is(:focus, :focus-visible, :active) {
+            outline: none;
+            box-shadow:
+                0 0 0 3px var(--btn-bg-color),
+                0 0 0 6px var(--btn-bg-2);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn-pro {
+                transition: linear;
+            }
+        }
+
+        .golden-button {
+            display: inline-block;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            outline: none;
+            font-family: inherit;
+            font-size: 0.9em;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 100px;
+            height: 1.75em;
+            line-height: 1.5em;
+            padding: 0 0.9em;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(110, 80, 20, 0.4),
+                inset 0 -2px 5px 1px rgba(139, 66, 8, 1),
+                inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+            background-image: linear-gradient(160deg,
+                    #a54e07,
+                    #b47e11,
+                    #fef1a2,
+                    #bc881b,
+                    #a54e07);
+            border: 1px solid #a55d07;
+            color: rgb(120, 50, 5);
+            text-shadow: 0 2px 2px rgba(250, 227, 133, 1);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            background-size: 100% 100%;
+            background-position: center;
+            justify-self: end;
+        }
+    </style>
+</head>
+
+<body class="text-white font-sans min-h-screen flex items-center justify-center py-16 px-4">
+
+    <div class="max-w-6xl w-full">
+        <div class="text-center mb-10">
+            <p
+                class="text-white px-4 py-1 tracking-wider text-sm mb-2 bg-white/10 w-fit rounded-full justify-self-center">
+                Pricing</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Our Pricing Plans</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Standard -->
+            <div
+                class="bg-transparent rounded-2xl p-6 hover:scale-[1.03] transition-all duration-300 border border-white/10 shadow-lg">
+                <h3 class="text-xl font-semibold mb-3">Standard</h3>
+                <p class="text-sm text-gray-400 mb-6">Essential tools for learners starting their journey</p>
+                <div class="text-3xl font-bold mb-4">$19<span class="text-sm font-medium text-gray-400">/month</span>
+                </div>
+                <button
+                    class="w-full mb-6 border border-white/20 rounded-md py-2 text-white font-semibold flex items-center justify-center gap-2 hover:bg-white/20 transition-all">
+                    Get Started
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Access to essential course materials</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Weekly live sessions with instructors</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Standard support for all inquiries</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Discounts available for future updates</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Regular support during business hours</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Limited priority support and responses</li>
+                </ul>
+            </div>
+
+            <!-- Pro -->
+            <div
+                class="bg-gradient-to-br from-[#1d1b3d] to-[#000000] rounded-2xl p-6 hover:scale-[1.03] transition-all duration-300 border border-white/10 shadow-xl relative">
+                <button role="button" class="golden-button">
+                    <span class="golden-text">Popular</span>
+                </button>
+                <h3 class="text-xl font-semibold mb-3">Pro</h3>
+                <p class="text-sm text-gray-300 mb-6">Beginners who are looking for essential resources and support</p>
+                <div class="text-3xl font-bold mb-4">$49<span class="text-sm font-medium text-gray-300">/month</span>
+                </div>
+                <button
+                    class="w-full mb-6 border border-white/20 rounded-md py-2 text-white font-semibold flex items-center justify-center gap-2 hover:bg-white/20 transition-all btn-pro">
+                    Get Started
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+                <ul class="space-y-3 text-sm text-gray-200">
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Access to all course materials</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Weekly live Q&A with instructors</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Unlimited support for all inquiries</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Live sessions and full support</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Get all course materials and updates</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Discounts on future course updates</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Complete access, live sessions, support</li>
+                </ul>
+            </div>
+
+            <!-- Platinum -->
+            <div
+                class="bg-transparent rounded-2xl p-6 hover:scale-[1.03] transition-all duration-300 border border-white/10 shadow-lg">
+                <h3 class="text-xl font-semibold mb-3">Platinum</h3>
+                <p class="text-sm text-gray-400 mb-6">Comprehensive features for experts seeking mastery</p>
+                <div class="text-3xl font-bold mb-4">$69<span class="text-sm font-medium text-gray-400">/month</span>
+                </div>
+                <button
+                    class="w-full mb-6 border border-white/20 rounded-md py-2 text-white font-semibold flex items-center justify-center gap-2 hover:bg-white/20 transition-all">
+                    Get Started
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Exclusive access to all course content</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Priority live Q&A sessions with experts</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Support with unlimited response times</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Special discounts on all future resources</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Full access to every course update</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> VIP support with faster resolutions</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-green-400"></i> Access to all course materials</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
