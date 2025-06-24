@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collapsible Sidebar</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify for icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+
+    <style>
+        .transition-width {
+            transition: width 0.3s ease;
+        }
+
+        .collapsed .logo-text,
+        .collapsed .search-btn,
+        .collapsed .tab-wrapper,
+        .collapsed .menu-text,
+        .collapsed .account-text {
+            display: none !important;
+        }
+
+        .collapsed .menu-badge {
+            display: none !important;
+        }
+
+
+        .collapsed .tab-btn {
+            padding: 0 !important;
+        }
+
+        .collapsed #menu-items div {
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <div id="sidebar"
+            class="bg-white h-screen p-4 transition-width duration-300 w-64 flex flex-col justify-between shadow-lg">
+
+            <!-- Top -->
+            <div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <img src="logo.png" alt="" class="w-7 h-7">
+                        <span class="logo-text font-semibold text-black">Marketerz</span>
+                    </div>
+                    <button class="search-btn text-gray-500 text-xl flex justify-center items-center">
+                        <iconify-icon icon="mdi:magnify" class="text-gray-700 text-2xl"></iconify-icon>
+                    </button>
+                </div>
+
+
+                <div class="tab-wrapper mt-6 flex gap-2 border-gray-100 border rounded-lg justify-self-center">
+                    <button id="tab-personal"
+                        class="tab-btn text-sm font-medium px-7 py-3 rounded-lg bg-blue-600 text-white">Personal</button>
+                    <button id="tab-business"
+                        class="tab-btn text-sm font-medium px-7 py-3 rounded-lg text-gray-700">Business</button>
+                </div>
+
+
+                <!-- Menu Items -->
+                <div id="menu-items" class="mt-6 space-y-4">
+                    <!-- Filled by JS -->
+                </div>
+            </div>
+
+            <!-- Bottom -->
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="https://i.pravatar.cc/40" class="rounded-full w-8 h-8" alt="User" />
+                    <div class="account-text">
+                        <p class="font-semibold text-sm">Nina Ergemia</p>
+                        <p class="text-xs text-gray-500">nina_ergemia@email.com</p>
+                    </div>
+                </div>
+
+                <!-- Collapse Button -->
+                <button onclick="toggleSidebar()"
+                    class="w-fit bg-blue-600 py-1 px-1 text-sm rounded-full text-white flex justify-center items-center"
+                    id="toggle-icon">
+                    <iconify-icon icon="mdi:chevron-left" class="text-2xl"></iconify-icon>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8">
+            <h1 class="text-2xl font-bold text-gray-700">Dashboard</h1>
+        </div>
+    </div>
+
+    <script>
+        const personalMenu = [
+            { name: "Dashboard", icon: "mdi:view-dashboard" },
+            { name: "Mail", icon: "mdi:email-outline" },
+            { name: "Campaigns", icon: "mdi:bullhorn-outline" },
+            { name: "Calendar", icon: "mdi:calendar-month-outline" },
+            { name: "Contacts", icon: "mdi:account-multiple-outline" },
+            { name: "Notifications", icon: "mdi:bell-outline", badge: 24 },
+            { name: "Chat", icon: "mdi:chat-outline", badge: 8 },
+            { name: "Settings", icon: "mdi:cog-outline" }
+        ];
+
+        const businessMenu = [
+            { name: "Analytics", icon: "mdi:chart-box-outline" },
+            { name: "Projects", icon: "mdi:folder-outline" },
+            { name: "Calendar", icon: "mdi:calendar-month-outline" },
+            { name: "Clients", icon: "mdi:account-multiple-outline" },
+            { name: "Notifications", icon: "mdi:bell-outline", badge: 12 },
+            { name: "Messages", icon: "mdi:chat-outline", badge: 3 },
+            { name: "Settings", icon: "mdi:cog-outline" }
+        ];
+
+        const menuContainer = document.getElementById("menu-items");
+
+        function renderMenu(menu) {
+            menuContainer.innerHTML = "";
+            menu.forEach(item => {
+                const div = document.createElement("div");
+                div.className = "flex justify-between items-center text-gray-700 hover:text-blue-600 cursor-pointer";
+
+                div.innerHTML = `
+          <div class="flex items-center gap-3">
+            <iconify-icon icon="${item.icon}" width="25" height="25"></iconify-icon>
+            <span class="menu-text font-bold text-sm">${item.name}</span>
+          </div>
+          ${item.badge ? `<span class="menu-badge bg-yellow-400 text-white text-xs px-2 py-0.5 rounded-full">${item.badge}</span>` : ""}
+        `;
+                menuContainer.appendChild(div);
+            });
+        }
+
+        // Load default
+        renderMenu(personalMenu);
+
+        // Tab switching
+        document.getElementById("tab-personal").addEventListener("click", () => {
+            renderMenu(personalMenu);
+            document.getElementById("tab-personal").classList.add("bg-blue-600", "text-white");
+            document.getElementById("tab-business").classList.remove("bg-blue-600", "text-white");
+        });
+
+        document.getElementById("tab-business").addEventListener("click", () => {
+            renderMenu(businessMenu);
+            document.getElementById("tab-business").classList.add("bg-blue-600", "text-white");
+            document.getElementById("tab-personal").classList.remove("bg-blue-600", "text-white");
+        });
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const icon = document.getElementById("toggle-icon");
+
+            sidebar.classList.toggle("w-64");
+            sidebar.classList.toggle("w-16");
+            sidebar.classList.toggle("collapsed");
+
+            icon.classList.toggle("rotate-180");
+        }
+
+    </script>
+</body>
+
+</html>
