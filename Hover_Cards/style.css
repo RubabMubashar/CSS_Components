@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.cards{
+    display: flex;
+    gap: 20px;
+    padding: 100px 0px;
+    color: white;
+}
+
+.card {
+    width: 300px;
+    height: 300px;
+    background: url('bg.png');
+    background-size: cover;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+.two {
+    background: url('bg1.png');
+    background-size: cover;
+} 
+.three{
+    background: url('bg2.png');
+    background-size: cover;
+}
+
+.card::before {
+    content: '\2B9D';
+    width: 80px;
+    height: 82px;
+    background: #FE938C;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    right: 0;
+    top: 0;
+    border-radius: 10px;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.inside {
+    background-color: #FE938C;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    border-bottom-right-radius: 10px;
+}
+
+p {
+    font-size: 14px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.card:hover p {
+    display: block;
+}
+
+.card:hover::before {
+    content: '\2B9F';
+}
