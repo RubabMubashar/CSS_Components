@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <!-- tailwind cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex flex-col items-center w-full">
+    <!-- Main Flex Container -->
+    <div
+      class="flex flex-col-reverse md:flex-row justify-center items-end gap-5 w-[90%] max-w-screen-xl justify-self-center min-h-[400px] md:min-h-[500px]">
+
+      <!-- Left Side (About Me) -->
+      <div class="flex-1 px-5 flex flex-col justify-end h-full">
+        <div class="border-2 md:p-15 p-8 w-full sm:w-[80%] md:w-[70%] relative">
+          <h2 class="font-bold text-2xl mb-3">About Me</h2>
+          <p class="text-sm">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est accusamus molestiae veritatis unde
+            laboriosam iure iste odit? Ipsa suscipit eligendi fuga, amet dolor magnam doloribus architecto,
+            illum sit placeat provident. Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+            provident quia eum expedita est. Quisquam, cupiditate sed quae ratione quibusdam saepe voluptate
+            soluta aliquam iusto! Rerum laborum earum ipsam dolore.
+          </p>
+          <div class="md:h-30 md:w-30 w-20 h-20 absolute bg-yellow-400 rounded-full md:-top-12 md:-right-12 -top-8 -right-8"><img src="assets/signature.png"></div>
+        </div>
+      </div>
+
+      <!-- Right Side (Image & Name) -->
+      <div class="w-full md:w-[40%] px-5 flex flex-col items-center md:items-end py-5">
+        <img src="assets/image.jpg" alt="" class="w-[80%] max-w-[500px]">
+        <h1 class="text-3xl md:text-5xl text-black font-bold my-7 uppercase tracking-widest text-center md:text-right">
+          Sophia Doe</h1>
+      </div>
+    </div>
+
+    <!-- HR Line -->
+    <hr class="my-6 border w-[90%] max-w-screen-xl">
+
+    <!--  Contact Section -->
+    <div class="flex justify-center w-[90%] max-w-screen-xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between w-full gap-10 relative px-6 md:items-center">
+
+        <!-- Phone -->
+        <div class="flex items-center gap-3">
+          <img src="assets/phone.png" alt="Phone Icon" class="w-8 h-8 md:w-10 md:h-10">
+          <span class="text-sm md:text-lg font-medium"> (123) 456-7890 </span>
+        </div>
+
+        <!-- Email -->
+        <div class="flex items-center gap-3">
+          <img src="assets/email.png" alt="Email Icon" class="w-8 h-8 md:w-10 md:h-10">
+          <span class="text-sm md:text-lg font-medium"> olegoodwin@gmail.com </span>
+        </div>
+
+        <!-- Address -->
+        <div class="flex items-center gap-3">
+          <img src="assets/location.png" alt="Location Icon" class="w-8 h-8 md:w-10 md:h-10">
+          <span class="text-sm md:text-lg font-medium"> 597 Jon Pine, Leschburgh, MD </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔻 Divider -->
+    <hr class="my-6 border w-[90%] max-w-screen-xl mx-auto">
+
+    <!-- 🧩 Education + Skills Section -->
+    <div class="flex flex-col md:flex-row w-[90%] max-w-screen-xl mx-auto gap-10">
+
+      <!-- Left Column: Education & Experience -->
+      <div class="w-full md:w-[60%] space-y-10 md:border-r-2 ">
+        <!-- Experience -->
+        <div>
+          <h2 class="text-xl font-bold mb-6">EXPERIENCE</h2>
+          <div class="space-y-6 relative pl-10">
+            <!-- Entry -->
+            <div class="relative border-l-2 pl-10 h-20">
+              <div
+                class="absolute -left-[2rem] top-2 bg-yellow-400 text-xs font-bold text-black rounded-full flex items-center justify-center w-15 h-15">
+                2022<br />2018</div>
+              <h3 class="font-semibold">Enter Your Job Position Here</h3>
+              <p class="text-sm text-gray-700">Company Name / Location</p>
+              <p class="text-xs text-gray-500 mt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+            </div>
+
+            <!-- Repeat Entry -->
+            <div class="relative border-l-2 pl-10 h-20">
+              <div
+                class="absolute -left-[2rem] top-2 bg-yellow-400 text-xs font-bold text-black w-15 h-15 rounded-full flex items-center justify-center">
+                2018<br />2015</div>
+              <h3 class="font-semibold">Enter Your Job Position Here</h3>
+              <p class="text-sm text-gray-700">Company Name / Location</p>
+              <p class="text-xs text-gray-500 mt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+            </div>
+
+            <!-- Repeat Entry -->
+            <div class="relative border-l-2 pl-10 h-20">
+              <div
+                class="absolute -left-[2rem] top-2 bg-yellow-400 text-xs font-bold text-black w-15 h-15 rounded-full flex items-center justify-center">
+                2015<br />2012</div>
+              <h3 class="font-semibold">Enter Your Job Position Here</h3>
+              <p class="text-sm text-gray-700">Company Name / Location</p>
+              <p class="text-xs text-gray-500 mt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="mb-10">
+          <h2 class="text-xl font-bold mb-6">EDUCATION</h2>
+          <div class="flex flex-col md:flex-row md:gap-20 gap-5 pl-10">
+
+            <!-- Repeat Entry -->
+            <div class="relative border-l-2 pl-10 h-20 flex flex-col justify-center">
+              <div
+                class="absolute -left-[2rem] top-2 bg-yellow-400 text-xs font-bold text-black w-15 h-15 rounded-full flex items-center justify-center">
+                2018<br />2015</div>
+              <h3 class="font-semibold">Name Of The College</h3>
+              <p class="text-sm text-gray-700">Degree Name</p>
+            </div>
+
+            <!-- Repeat Entry -->
+            <div class="relative border-l-2 pl-10 h-20 flex flex-col justify-center">
+              <div
+                class="absolute -left-[2rem] top-2 bg-yellow-400 text-xs font-bold text-black w-15 h-15 rounded-full flex items-center justify-center">
+                2018<br />2015</div>
+              <h3 class="font-semibold">Name Of The College</h3>
+              <p class="text-sm text-gray-700">Degree Name</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Skills -->
+      <div class="w-full md:w-[40%] space-y-10">
+        <!-- Soft Skills -->
+        <div class="border-b-2">
+          <h2 class="text-xl font-bold mb-6">LANGUAGES</h2>
+          <div class="space-y-4 mb-8">
+            <!-- Skill -->
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-center">
+                <h3 class="font-semibold">HTML</h3>
+                <h3 class="font-semibold">100%</h3>
+              </div>
+              <div class="border-2 w-full h-5 flex items-center px-[3px]">
+                <div class="bg-yellow-400 h-3 w-full"></div>
+              </div>
+            </div>
+            <!-- Skill -->
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-center">
+                <h3 class="font-semibold">CSS</h3>
+                <h3 class="font-semibold">70%</h3>
+              </div>
+              <div class="border-2 w-full h-5 flex items-center px-[3px]">
+                <div class="bg-yellow-400 h-3 w-90"></div>
+              </div>
+            </div>
+            <!-- Skill -->
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-center">
+                <h3 class="font-semibold">JavaScript</h3>
+                <h3 class="font-semibold">30%</h3>
+              </div>
+              <div class="border-2 w-full h-5 flex items-center px-[3px]">
+                <div class="bg-yellow-400 h-3 w-30"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Hard Skills -->
+        <div>
+          <h2 class="text-xl font-bold mb-6">HARD SKILLS</h2>
+          <div class="space-y-4 mb-8">
+            <!-- Skill -->
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-center">
+                <h3 class="font-semibold">MY SQL</h3>
+                <h3 class="font-semibold">100%</h3>
+              </div>
+              <div class="border-2 w-full h-5 flex items-center px-[3px]">
+                <div class="bg-yellow-400 h-3 w-full"></div>
+              </div>
+            </div>
+            <!-- Skill -->
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-center">
+                <h3 class="font-semibold">MONGO DB</h3>
+                <h3 class="font-semibold">70%</h3>
+              </div>
+              <div class="border-2 w-full h-5 flex items-center px-[3px]">
+                <div class="bg-yellow-400 h-3 w-90"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HR Line -->
+    <hr class="my-6 border w-[90%] max-w-screen-xl">
+
+    <!-- Social  -->
+    <div class="flex justify-center w-[90%] max-w-screen-xl mx-auto mb-5">
+      <div class="flex flex-col md:flex-row justify-between w-full gap-10 relative px-6 items-center">
+
+        <!-- Phone -->
+        <div class="flex items-center gap-3">
+          <img src="assets/instagram.png" alt="Phone Icon" class="w-5 h-5">
+          <span class="text-xs font-medium"> instgram.com/thedesigningdev</span>
+        </div>
+
+        <!-- Email -->
+        <div class="flex items-center gap-3">
+          <img src="assets/youtube.png" alt="Email Icon" class="w-5 h-5">
+          <span class="text-xs font-medium"> youtube.com/thedesigningdev </span>
+        </div>
+
+        <!-- Address -->
+        <div class="flex items-center gap-3">
+          <img src="assets/facebook.png" alt="Location Icon" class="w-5 h-5">
+          <span class="text-xs font-medium"> facebook.com/thedesigningdev </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

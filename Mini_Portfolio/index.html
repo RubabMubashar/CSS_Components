@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <!-- tailwind cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- iconscout cdn -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .my-shadow {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white py-4 px-5 rounded-3xl shadow-lg max-w-xs text-center flex flex-col gap-2 my-shadow">
+            <img src="assets/image.jpg" alt="" class="rounded-3xl h-75 w-full object-cover mb-1">
+            <div class="w-full flex items-center justify-start gap-2 ">
+                <h2 class="text-2xl font-bold">Sophia Doe</h2>
+                <img src="assets/verify.png" alt="" class="w-6 h-6">
+            </div>
+            <p class="text-left text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="w-full flex items-center gap-6 justify-center">
+                <p class="flex items-center gap-1 text-black font-semibold"><span><i
+                            class="uil uil-users-alt text-gray-500 w-16 h-16 text-[22px]"></i></span>312</p>
+                <p class="flex items-center gap-1 text-black font-semibold"><span><i
+                            class="uil uil-apps text-gray-500 w-16 h-16 text-[22px]"></i></span>48</p>
+                <div class="flex justify-center items-center gap-12 h-full">
+                    <div class="bg-gradient-to-b from-stone-300/40 to-transparent p-[4px] rounded-[50px]">
+                        <button
+                            class="group p-[4px] rounded-[50px] bg-gradient-to-b from-white to-stone-200/40 shadow-[0_1px_3px_rgba(0,0,0,0.5)] active:shadow-[0_0px_1px_rgba(0,0,0,0.5)] active:scale-[0.995]">
+                            <div class="bg-gradient-to-b from-stone-200/40 to-white/80 rounded-[50px] px-2 py-2">
+                                <div class="flex gap-2 items-center">
+                                    <a class="font-semibold" href="portfolio.html">See More</a>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
