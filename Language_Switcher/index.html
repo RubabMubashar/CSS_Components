@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Language Switcher</title>
+    <style>
+        /* Reset + smooth transitions */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            color: #000;
+            min-height: 100vh;
+            padding: 40px 20px;
+            transition: all 0.4s ease;
+            background: #9A7197;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 600px;
+            margin: auto;
+            position: relative;
+        }
+
+        .custom-select-wrapper {
+            position: relative;
+            width: 180px;
+            font-family: sans-serif;
+            margin-bottom: 30px;
+            color: #000;
+        }
+
+        .custom-select {
+            background: #fff;
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        [dir="rtl"] .custom-select {
+            flex-direction: row-reverse;
+        }
+
+
+        .custom-select img {
+            width: 24px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .arrow {
+            font-size: 25px;
+            margin-left: auto;
+            color: #333;
+        }
+
+        .select-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+        }
+
+        .select-options div {
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .select-options div:hover {
+            background: #f0f0f0;
+        }
+
+        .select-options img {
+            width: 24px;
+            margin-right: 10px;
+        }
+
+        .select-options.show {
+            display: block;
+        }
+
+
+        /* Content Box */
+        .content-box {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            text-align: center;
+        }
+
+        .content-box h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .content-box p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .content-box button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #9A7197;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .content-box button:hover {
+            background: #ffc0fb;
+        }
+
+        /* RTL / LTR switch */
+        [dir="rtl"] .content-box {
+            text-align: right;
+        }
+
+        [dir="ltr"] .content-box {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Dropdown Language Switcher -->
+        <div class="custom-select-wrapper">
+            <div class="custom-select" onclick="toggleDropdown()">
+                <img id="selected-flag" src="https://flagcdn.com/w40/us.png" alt="flag" />
+                <span id="selected-lang">English</span>
+                <span class="arrow">&#9662;</span>
+            </div>
+            <div class="select-options">
+                <div onclick="selectLanguage('en')">
+                    <img src="https://flagcdn.com/w40/us.png" alt="EN" />
+                    <span>English</span>
+                </div>
+                <div onclick="selectLanguage('ar')">
+                    <img src="https://flagcdn.com/w40/sa.png" alt="AR" />
+                    <span>العربية</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Demo Content -->
+        <div class="content-box">
+            <h1 class="translatable" data-en="Welcome to Our Website!" data-ar="مرحبًا بكم في موقعنا!">Welcome to Our
+                Website!</h1>
+            <p class="translatable" data-en="Explore our awesome features and services."
+                data-ar="استكشف ميزاتنا وخدماتنا الرائعة.">Explore our awesome features and services.</p>
+            <button class="translatable" data-en="Get Started" data-ar="ابدأ الآن">Get Started</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            document.querySelector('.select-options').classList.toggle('show');
+        }
+
+        function selectLanguage(lang) {
+            const flag = lang === 'ar'
+                ? 'https://flagcdn.com/w40/sa.png'
+                : 'https://flagcdn.com/w40/us.png';
+
+            const label = lang === 'ar' ? 'العربية' : 'English';
+
+            document.getElementById('selected-flag').src = flag;
+            document.getElementById('selected-lang').textContent = label;
+            document.querySelector('.select-options').classList.remove('show');
+
+            switchLanguage(lang);
+        }
+
+        // Optional: Close dropdown if clicked outside
+        window.addEventListener('click', function (e) {
+            if (!document.querySelector('.custom-select-wrapper').contains(e.target)) {
+                document.querySelector('.select-options').classList.remove('show');
+            }
+        });
+
+
+        function switchLanguage(lang) {
+            const html = document.documentElement;
+
+            // Set direction and lang
+            html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            html.setAttribute('lang', lang);
+
+            // Update text for all translatable elements
+            document.querySelectorAll('.translatable').forEach(el => {
+                if (el.dataset[lang]) {
+                    el.textContent = el.dataset[lang];
+                }
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
