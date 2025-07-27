@@ -62,7 +62,7 @@
             const messageBox = document.getElementById('messageBox');
 
             copyButton.addEventListener('click', async () => {
-                const text = textToCopy.innerText; // Get the text content
+                const text = textToCopy.innerText; 
 
                 // Create a temporary textarea element to copy the text
                 const tempTextArea = document.createElement('textarea');
@@ -80,10 +80,6 @@
                 }
             });
 
-            /**
-              @param {string} message 
-              @param {string} type
-             */
             function showMessage(message, type) {
                 messageBox.textContent = message;
                 messageBox.classList.remove('hidden', 'bg-blue-500', 'bg-red-500');
