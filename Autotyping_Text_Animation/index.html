@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Typing Text Animation</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Inter font from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom animation for the blinking cursor */
+        .blinking-cursor {
+            opacity: 1;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-black flex items-center justify-center min-h-screen p-4">
+
+    <div class="text-center">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+            <span class="text-white">I am a </span>
+            <span id="typed-text" class="text-purple-700"></span>
+            <span id="cursor" class="blinking-cursor text-purple-700">|</span>
+        </h1>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const typedTextSpan = document.getElementById('typed-text');
+            const cursorSpan = document.getElementById('cursor');
+
+            // Array of words to type out
+            const words = ["Web Developer", "Designer", "Creator", "Innovator"];
+            let wordIndex = 0; 
+            let charIndex = 0; 
+            let isDeleting = false; 
+            let typingSpeed = 150; 
+            let deletingSpeed = 75; 
+            let pauseBeforeDelete = 1500; 
+            let pauseBeforeType = 500;
+
+            /* main function */
+            function typeEffect() {
+                const currentWord = words[wordIndex];
+                let dynamicSpeed = typingSpeed;
+
+                if (isDeleting) {
+                    // Deleting text
+                    typedTextSpan.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                    dynamicSpeed = deletingSpeed; // Faster deletion
+                } else {
+                    // Typing text
+                    typedTextSpan.textContent = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                    dynamicSpeed = typingSpeed; // Slower typing
+                }
+
+                // Check if the current word is fully typed
+                if (!isDeleting && charIndex === currentWord.length) {
+                    // Word is fully typed, set to delete after a pause
+                    dynamicSpeed = pauseBeforeDelete;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    // Word is fully deleted, move to the next word and start typing
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length; // Cycle through words
+                    dynamicSpeed = pauseBeforeType; // Pause before typing new word
+                }
+
+                // Call the function again after a delay
+                setTimeout(typeEffect, dynamicSpeed);
+            }
+
+            // Start the typing effect when the DOM is fully loaded
+            typeEffect();
+        });
+    </script>
+</body>
+</html>
